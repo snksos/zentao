@@ -1,0 +1,8 @@
+zentao:
+  build: .
+  container_name: snkso_zentao
+  restart: always
+  ports:
+    - "8088:80"
+  volumes:
+    - /opt/zbox/:/opt/zbox/
