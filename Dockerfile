@@ -1,8 +1,12 @@
 FROM ubuntu:trusty
 
-ADD https://jaist.dl.sourceforge.net/project/zentao/9.8/ZenTaoPMS.9.8.stable.zbox_64.tar.gz /tmp
+COPY ./ZenTaoPMS.9.8.stable.zbox_64 /opt/zbox/
 
-COPY ./boot.sh /usr/local/boot.sh
-RUN chmod +x /usr/local/boot.sh
+CMD ['/opt/zbox/zbox', 'start']
 
-ENTRYPOINT  ["/usr/local/boot.sh"]
+CMD ['cd', '/opt/zbox/auth/']
+CMD ['/opt/zbox/auth/adduser.sh']
+CMD ['set', 'Account', 'root']
+CMD ['set', 'Password', '123456']
+
+#ENTRYPOINT  ["/usr/local/boot.sh"]

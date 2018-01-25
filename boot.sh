@@ -8,4 +8,3 @@ if [ -z "${dir}" ];then
   tar -zxvf  ZenTaoPMS.9.8.stable.zbox_64.tar.gz -C   /opt
 fi
 
-/opt/zbox/zbox start && tail -f /dev/null
