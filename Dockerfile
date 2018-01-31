@@ -1,12 +1,11 @@
 FROM ubuntu:trusty
 
-COPY ./ZenTaoPMS.9.8.stable.zbox_64 /opt/zbox/
+COPY ./zbox.9.8 /opt/zbox/
+
+COPY ./boot.sh /usr/local/bin/boot.sh
+
+RUN chmod +x /usr/local/bin/boot.sh
 
 CMD ['/opt/zbox/zbox', 'start']
 
-CMD ['cd', '/opt/zbox/auth/']
-CMD ['/opt/zbox/auth/adduser.sh']
-CMD ['set', 'Account', 'root']
-CMD ['set', 'Password', '123456']
-
-#ENTRYPOINT  ["/usr/local/boot.sh"]
+ENTRYPOINT  ["boot.sh"]

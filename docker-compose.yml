@@ -4,5 +4,14 @@ zentao:
   restart: always
   ports:
     - "8088:80"
+    - "3307:3306"
+  # if web response code: 310 ERR_TOO_MANY_REDIRECTS, please use host mode.
+#    network_mode: "host"
+  environment:
+  # specifies you own account and password.
+    USER: "root"
+    PASSWD: "123456"
+    BIND_ADDRESS: "false"
   volumes:
-    - /opt/zbox/:/opt/zbox/
+  # specifies the path replace "./data".
+    - ./data:/opt/zbox/
